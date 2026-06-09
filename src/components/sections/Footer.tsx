@@ -22,7 +22,7 @@ export default function Footer() {
         {/* Brand Information */}
         <div className="flex flex-col gap-6">
           <h3 className="font-editorial text-2xl tracking-[0.2em] text-white uppercase font-light">
-            THE WHITE PALACE
+            LUXORIA PALACE
           </h3>
           <p className="text-stone/70 font-sans text-[12px] leading-relaxed max-w-xs">
             Where architecture, comfort, and emotion become one timeless experience.
@@ -103,7 +103,7 @@ export default function Footer() {
 
       {/* Footer Legal & Copyright */}
       <div className="max-w-7xl mx-auto border-t border-white/5 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-stone/60 font-sans text-[11px]">
-        <span>© {new Date().getFullYear()} The White Palace. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} Luxoria Palace. All rights reserved.</span>
         <div className="flex gap-6">
           <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-white transition-colors">Terms of Retreat</a>

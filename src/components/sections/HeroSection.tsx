@@ -356,7 +356,7 @@ export default function HeroSection() {
                   "0 10px 40px rgba(0,0,0,0.28)",
               }}
             >
-              THE WHITE
+              LUXORIA
               <br />
               PALACE
             </h1>

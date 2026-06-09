@@ -23,7 +23,7 @@ export default function GallerySection() {
             The Palace Gallery
           </h2>
           <p className="text-muted font-sans text-section-body leading-relaxed">
-            Captured moments of quiet spaces, travertine pillars, light reflecting on smooth stone corridors, and the elegant architecture of The White Palace.
+            Captured moments of quiet spaces, travertine pillars, light reflecting on smooth stone corridors, and the elegant architecture of Luxoria Palace.
           </p>
         </div>
 

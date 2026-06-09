@@ -89,7 +89,7 @@ export default function FinalCTA() {
                   >
                     <div className="text-center mb-4">
                       <span className="text-gold text-[9px] font-sans uppercase tracking-[0.2em] font-semibold">
-                        The White Palace
+                        Luxoria Palace
                       </span>
                       <h3 className="font-editorial text-2xl lg:text-3xl text-ink uppercase tracking-wider mt-1">
                         Request Reservation

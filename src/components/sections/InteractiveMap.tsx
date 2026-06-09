@@ -18,7 +18,7 @@ interface Landmark {
 const LANDMARKS: Landmark[] = [
   {
     id: "palace",
-    name: "The White Palace",
+    name: "Luxoria Palace",
     type: "palace",
     distance: "0 km",
     time: "Estate Center",

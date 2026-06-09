@@ -5,7 +5,7 @@ import { Star } from "lucide-react";
 
 const REVIEWS = [
   {
-    quote: "An architectural wonder. Entering The White Palace feels like walking into an editorial painting. The quietness, the detail in the travertine stone, and the ocean views are unmatched.",
+    quote: "An architectural wonder. Entering Luxoria Palace feels like walking into an editorial painting. The quietness, the detail in the travertine stone, and the ocean views are unmatched.",
     author: "Elena Rostova",
     title: "President, Milan Design Week",
     rating: 5

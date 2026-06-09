@@ -89,7 +89,7 @@ export default function FloatingNav() {
             onClick={() => handleNavClick("#hero")}
             className="text-ink font-editorial text-lg tracking-[0.2em] font-light hover:opacity-70 transition-opacity"
           >
-            THE WHITE PALACE
+            LUXORIA PALACE
           </button>
 
           {/* Desktop Nav Items */}
@@ -159,7 +159,7 @@ export default function FloatingNav() {
             </button>
 
             <h2 className="font-editorial text-2xl tracking-[0.2em] text-gold mb-4">
-              THE WHITE PALACE
+              LUXORIA PALACE
             </h2>
 
             {NAV_ITEMS.map((item) => (

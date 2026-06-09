@@ -78,7 +78,7 @@ export default function Preloader() {
     >
       <div ref={textRef} className="flex flex-col items-center gap-6">
         <h1 className="text-white font-editorial text-4xl tracking-[0.25em] font-light">
-          THE WHITE PALACE
+          LUXORIA PALACE
         </h1>
         <p className="text-stone font-sans text-xs tracking-[0.3em] uppercase opacity-70">
           Entering Timeless Luxury

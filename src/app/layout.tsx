@@ -18,11 +18,11 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "THE WHITE PALACE | Cinematic Luxury Hotel & Private Retreat",
+  title: "LUXORIA PALACE | Cinematic Luxury Hotel & Private Retreat",
   description:
-    "Enter a realm where architecture, comfort, and emotion become one timeless experience. Explore curated suites, custom private spa, and elite fine dining at The White Palace.",
+    "Enter a realm where architecture, comfort, and emotion become one timeless experience. Explore curated suites, custom private spa, and elite fine dining at Luxoria Palace.",
   keywords: [
-    "The White Palace",
+    "Luxoria Palace",
     "luxury hotel",
     "Aman Resorts style",
     "Four Seasons Retreat",
@@ -30,19 +30,19 @@ export const metadata: Metadata = {
     "architectural experience",
     "cinematic hotel website",
   ],
-  authors: [{ name: "The White Palace Royal Hospitality" }],
+  authors: [{ name: "Luxoria Palace Royal Hospitality" }],
   openGraph: {
-    title: "THE WHITE PALACE | Cinematic Luxury Hotel & Private Retreat",
+    title: "LUXORIA PALACE | Cinematic Luxury Hotel & Private Retreat",
     description:
       "Enter a realm where architecture, comfort, and emotion become one timeless experience. Explore curated suites, custom private spa, and elite fine dining.",
     type: "website",
     locale: "en_US",
-    siteName: "The White Palace",
+    siteName: "Luxoria Palace",
   },
   twitter: {
     card: "summary_large_image",
-    title: "THE WHITE PALACE | Cinematic Luxury Hotel",
-    description: "Discover modern architectural luxury hospitality at The White Palace.",
+    title: "LUXORIA PALACE | Cinematic Luxury Hotel",
+    description: "Discover modern architectural luxury hospitality at Luxoria Palace.",
   },
   robots: {
     index: true,

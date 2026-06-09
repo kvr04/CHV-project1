@@ -12,18 +12,18 @@ interface Message {
 const PREDEFINED_RESPONSES: Record<string, string> = {
   availability: "We currently have limited availability in our Presidential Suite and Sky Palace Villa for the upcoming season. Would you like me to reserve a tentative hold for your dates?",
   dining: "Our fine dining options include: Michelin-star rooftop candlelight dinners, custom wine tasting in our private cave vaults, and personalized tableside cooking curated by our resident Chef. Bookings are recommended at least 24 hours in advance.",
-  spa: "The White Palace spa features private thermal baths carved in travertine columns, botanical aromatherapy sessions, and an infinity lagoon. Treatments are available daily from 08:00 to 22:00.",
+  spa: "Luxoria Palace spa features private thermal baths carved in travertine columns, botanical aromatherapy sessions, and an infinity lagoon. Treatments are available daily from 08:00 to 22:00.",
   wellness: "Wellness options include sunlit yoga sessions, biomechanically optimized personal trainers, and private meditation gardens surrounded by soothing spring waters.",
   booking: "Reservations can be locked directly using our final reservation form at the bottom of the page, or I can manually prepare a custom itinerary for you. Please let me know your preferred dates.",
   amenities: "Our key amenities include 24/7 private butler services, airport pickup via premium zero-emission limousines, an art vault repository, private beach channels, and automated smart-room panel controls."
 };
 
-const BOT_FALLBACK = "I am only authorized to assist with room availability, services, bookings, dining arrangements, spa, and general wellness amenities inside The White Palace. Please let me know how I can guide your stay.";
+const BOT_FALLBACK = "I am only authorized to assist with room availability, services, bookings, dining arrangements, spa, and general wellness amenities inside Luxoria Palace. Please let me know how I can guide your stay.";
 
 export default function ConciergeAI() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: "Welcome to The White Palace. I am your private AI Concierge. How may I assist your luxury retreat today?" }
+    { sender: "bot", text: "Welcome to Luxoria Palace. I am your private AI Concierge. How may I assist your luxury retreat today?" }
   ]);
   const [inputValue, setInputValue] = useState("");
   const chatEndRef = useRef<HTMLDivElement>(null);
