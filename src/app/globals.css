@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F6F1E8;
+  --surface: #FFFDF9;
+  --beige: #E7D9C9;
+  --champagne: #C6A97A;
+  --gold: #B58A52;
+  --stone: #D8C7B5;
+  --ink: #181512;
+  --muted: #7B6F63;
+  --white: #FFFFFF;
+
+  /* Typography variables */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-editorial: "Cormorant Garamond", Georgia, serif;
+
+  /* Transitions */
+  --ease-luxury: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-medium: 0.6s;
+  --duration-slow: 1.2s;
+}
+
+/* Reset & Base HTML Styling */
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Typography Helpers */
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+/* Custom Selection Style */
+::selection {
+  background-color: var(--champagne);
+  color: var(--white);
+}
+
+/* Custom Elegant Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--stone);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--champagne);
+}
+
+/* Lenis Smooth Scroll Integration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Glassmorphism Styles for Luxury Ivory Navbar and Concierge Cards */
+.glass-ivory {
+  background: rgba(255, 253, 249, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(198, 169, 122, 0.15);
+}
+
+/* Magnetic Button Hover glow */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(198, 169, 122, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-luxury);
+  pointer-events: none;
+}
+
+.btn-glow:hover::after {
+  opacity: 1;
+}
+
+/* Reduced Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Parallax zoom images helper */
+.parallax-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-img {
+  transition: transform 0.8s var(--ease-luxury);
+}
+
+.parallax-wrap:hover .parallax-img {
+  transform: scale(1.05);
+}
