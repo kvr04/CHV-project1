@@ -9,21 +9,21 @@ const suites = [
   {
     name: "Ocean Royal Suite",
 
-    src: "/images/suites/presidential-ocean-suite.png",
+    src: "/images/suites/presidential-ocean-suite.webp",
 
     gallery: [
       {
-        image: "/images/suites/presidential-ocean-suite.png",
+        image: "/images/suites/presidential-ocean-suite.webp",
         title: "Presidential Ocean Suite",
       },
 
       {
-        image: "/images/suites/ocean-premium-suite.png",
+        image: "/images/suites/ocean-premium-suite.webp",
         title: "Ocean Premium Suite",
       },
 
       {
-        image: "/images/suites/sunset-panorama-suite.png",
+        image: "/images/suites/sunset-panorama-suite.webp",
         title: "Sunset Panorama Suite",
       },
     ],
@@ -39,21 +39,21 @@ const suites = [
   {
     name: "Imperial Wellness Villa",
 
-    src: "/images/suites/cliffside-infinity-villa.png",
+    src: "/images/suites/cliffside-infinity-villa.webp",
 
     gallery: [
       {
-        image: "/images/suites/cliffside-infinity-villa.png",
+        image: "/images/suites/cliffside-infinity-villa.webp",
         title: "Infinity Villa",
       },
 
       {
-        image: "/images/suites/imperial-spa-bathroom.png",
+        image: "/images/suites/imperial-spa-bathroom.webp",
         title: "Imperial Spa Bathroom",
       },
 
       {
-        image: "/images/suites/royal-marble-bathroom.png",
+        image: "/images/suites/royal-marble-bathroom.webp",
         title: "Royal Marble Bathroom",
       },
     ],
@@ -69,21 +69,21 @@ const suites = [
   {
     name: "Metropolitan Penthouse",
 
-    src: "/images/suites/deluxe-city-suite.png",
+    src: "/images/suites/deluxe-city-suite.webp",
 
     gallery: [
       {
-        image: "/images/suites/deluxe-city-suite.png",
+        image: "/images/suites/deluxe-city-suite.webp",
         title: "Deluxe City Suite",
       },
 
       {
-        image: "/images/suites/presidential-ocean-suite.png",
+        image: "/images/suites/presidential-ocean-suite.webp",
         title: "Luxury Lounge",
       },
 
       {
-        image: "/images/suites/royal-marble-bathroom.png",
+        image: "/images/suites/royal-marble-bathroom.webp",
         title: "Marble Bath Experience",
       },
     ],

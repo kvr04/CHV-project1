@@ -7,19 +7,19 @@ import Image from "next/image";
 const DINING_IMAGES = [
   {
     name: "Signature Fine Dining",
-    src: "/images/dining/chef-table-experience.png",
+    src: "/images/dining/chef-table-experience.webp",
     description:
       "Michelin-inspired tasting experiences crafted with seasonal ingredients and elegant presentation.",
   },
   {
     name: "Private Chef Experience",
-    src: "/images/dining/executive-chef-plating.png",
+    src: "/images/dining/executive-chef-plating.webp",
     description:
       "Exclusive culinary storytelling curated by world-class chefs in intimate luxury settings.",
   },
   {
     name: "Velvet Lounge & Bar",
-    src: "/images/dining/luxury-cocktail-bar.png",
+    src: "/images/dining/luxury-cocktail-bar.webp",
     description:
       "An atmospheric cocktail sanctuary with handcrafted spirits and timeless marble interiors.",
   },

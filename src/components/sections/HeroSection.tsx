@@ -10,7 +10,7 @@ const TOTAL_FRAMES = 151;
 const pad = (n: number) => String(n).padStart(6, "0");
 
 const frameUrl = (i: number) =>
-  `/hero-frames/frame_${pad(i)}.png`;
+  `/hero-frames/frame_${pad(i)}.webp`;
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
