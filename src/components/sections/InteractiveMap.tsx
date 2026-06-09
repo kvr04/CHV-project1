@@ -108,18 +108,67 @@ export default function InteractiveMap() {
             <div className="absolute inset-0 z-0 opacity-40">
               <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                 {/* Coastal contours */}
-                <path d="M 0,220 C 120,220 180,140 280,180 C 380,220 420,320 540,300 C 660,280 720,450 900,450" fill="none" stroke="#E7D9C9" strokeWidth="2" strokeDasharray="5,5" />
-                <path d="M 0,260 C 130,260 190,180 290,220 C 390,260 430,360 550,340 C 670,320 730,480 900,480" fill="none" stroke="#E7D9C9" strokeWidth="1" />
+                <motion.path 
+                  d="M 0,220 C 120,220 180,140 280,180 C 380,220 420,320 540,300 C 660,280 720,450 900,450" 
+                  fill="none" stroke="#7B6F63" strokeWidth="2" strokeDasharray="6,6" 
+                  initial={{ strokeDashoffset: 100 }}
+                  animate={{ strokeDashoffset: 0 }}
+                  transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                />
+                <motion.path 
+                  d="M 0,260 C 130,260 190,180 290,220 C 390,260 430,360 550,340 C 670,320 730,480 900,480" 
+                  fill="none" stroke="#D8C7B5" strokeWidth="1" 
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 1 }}
+                  transition={{ duration: 3, ease: "easeInOut" }}
+                  viewport={{ once: true }}
+                />
                 
                 {/* Water text */}
-                <text x="70%" y="85%" fill="#D8C7B5" fontSize="10" fontFamily="sans-serif" letterSpacing="0.2em" className="uppercase select-none">Mediterranean Sea</text>
+                <motion.text 
+                  x="70%" y="85%" fill="#7B6F63" fontSize="10" fontFamily="sans-serif" letterSpacing="0.2em" className="uppercase select-none"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 2 }}
+                  viewport={{ once: true }}
+                >
+                  Mediterranean Sea
+                </motion.text>
                 
                 {/* Roads */}
-                <line x1="20%" y1="30%" x2="40%" y2="25%" stroke="#E7D9C9" strokeWidth="1" />
-                <line x1="40%" y1="25%" x2="50%" y2="50%" stroke="#E7D9C9" strokeWidth="1" />
-                <line x1="50%" y1="50%" x2="65%" y2="60%" stroke="#E7D9C9" strokeWidth="1" />
-                <line x1="50%" y1="50%" x2="70%" y2="35%" stroke="#E7D9C9" strokeWidth="1" />
-                <line x1="50%" y1="50%" x2="30%" y2="75%" stroke="#E7D9C9" strokeWidth="1" />
+                {[
+                  {x1:"20%", y1:"30%", x2:"40%", y2:"25%"},
+                  {x1:"40%", y1:"25%", x2:"50%", y2:"50%"},
+                  {x1:"50%", y1:"50%", x2:"65%", y2:"60%"},
+                  {x1:"50%", y1:"50%", x2:"70%", y2:"35%"},
+                  {x1:"50%", y1:"50%", x2:"30%", y2:"75%"}
+                ].map((road, i) => (
+                  <motion.line 
+                    key={i}
+                    x1={road.x1} y1={road.y1} x2={road.x2} y2={road.y2} 
+                    stroke="#D8C7B5" strokeWidth="1" 
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    transition={{ delay: 1 + i * 0.2, duration: 1 }}
+                    viewport={{ once: true }}
+                  />
+                ))}
+
+                {/* Moving subtle ocean waves */}
+                <motion.path 
+                  d="M 650,400 Q 670,390 690,400 T 730,400"
+                  fill="none" stroke="#7B6F63" strokeWidth="0.5"
+                  initial={{ x: -10, opacity: 0 }}
+                  animate={{ x: 10, opacity: [0, 0.4, 0] }}
+                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", repeatType: "mirror" }}
+                />
+                <motion.path 
+                  d="M 750,430 Q 770,420 790,430 T 830,430"
+                  fill="none" stroke="#7B6F63" strokeWidth="0.5"
+                  initial={{ x: 10, opacity: 0 }}
+                  animate={{ x: -10, opacity: [0, 0.3, 0] }}
+                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", repeatType: "mirror", delay: 1 }}
+                />
               </svg>
             </div>
 

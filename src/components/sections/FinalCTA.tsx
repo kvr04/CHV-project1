@@ -8,13 +8,41 @@ export default function FinalCTA() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setIsModalOpen(false);
-    }, 2500);
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      checkIn: formData.get('checkIn'),
+      checkOut: formData.get('checkOut'),
+      suite: formData.get('suite'),
+      guests: formData.get('guests'),
+      name: formData.get('name'),
+      email: formData.get('email'),
+    };
+
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setFormSubmitted(true);
+        setTimeout(() => {
+          setFormSubmitted(false);
+          setIsModalOpen(false);
+        }, 3000);
+      }
+    } catch (error) {
+      console.error('Booking error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -103,6 +131,7 @@ export default function FinalCTA() {
                         <input
                           required
                           type="date"
+                          name="checkIn"
                           className="w-full bg-background border border-stone/15 p-3 rounded-xl text-[12px] font-sans focus:outline-none focus:border-gold transition-colors"
                         />
                       </div>
@@ -111,6 +140,7 @@ export default function FinalCTA() {
                         <input
                           required
                           type="date"
+                          name="checkOut"
                           className="w-full bg-background border border-stone/15 p-3 rounded-xl text-[12px] font-sans focus:outline-none focus:border-gold transition-colors"
                         />
                       </div>
@@ -119,7 +149,7 @@ export default function FinalCTA() {
                     {/* Suite Selection */}
                     <div className="flex flex-col gap-2">
                       <label className="text-[10px] font-sans uppercase tracking-[0.1em] text-muted">Sanctuary Type</label>
-                      <select className="w-full bg-background border border-stone/15 p-3 rounded-xl text-[12px] font-sans focus:outline-none focus:border-gold transition-colors">
+                      <select name="suite" className="w-full bg-background border border-stone/15 p-3 rounded-xl text-[12px] font-sans focus:outline-none focus:border-gold transition-colors">
                         <option>Presidential Suite (From $4,500 / night)</option>
                         <option>Royal Ocean Suite (From $3,200 / night)</option>
                         <option>Sky Palace Suite (From $6,000 / night)</option>
@@ -130,7 +160,7 @@ export default function FinalCTA() {
                     {/* Guests Selection */}
                     <div className="flex flex-col gap-2">
                       <label className="text-[10px] font-sans uppercase tracking-[0.1em] text-muted">Number of Guests</label>
-                      <select className="w-full bg-background border border-stone/15 p-3 rounded-xl text-[12px] font-sans focus:outline-none focus:border-gold transition-colors">
+                      <select name="guests" className="w-full bg-background border border-stone/15 p-3 rounded-xl text-[12px] font-sans focus:outline-none focus:border-gold transition-colors">
                         <option>1 Guest</option>
                         <option>2 Guests</option>
                         <option>3 Guests</option>
@@ -144,6 +174,7 @@ export default function FinalCTA() {
                       <input
                         required
                         type="text"
+                        name="name"
                         placeholder="Elena Rostova"
                         className="w-full bg-background border border-stone/15 p-3 rounded-xl text-[12px] font-sans focus:outline-none focus:border-gold transition-colors"
                       />
@@ -153,6 +184,7 @@ export default function FinalCTA() {
                       <input
                         required
                         type="email"
+                        name="email"
                         placeholder="elena@designweek.it"
                         className="w-full bg-background border border-stone/15 p-3 rounded-xl text-[12px] font-sans focus:outline-none focus:border-gold transition-colors"
                       />
@@ -160,9 +192,10 @@ export default function FinalCTA() {
 
                     <button
                       type="submit"
-                      className="w-full py-4 mt-2 rounded-xl bg-gold text-white text-[11px] font-sans uppercase tracking-[0.2em] hover:bg-ink hover:text-white transition-colors duration-500 shadow-md cursor-pointer"
+                      disabled={isSubmitting}
+                      className="w-full py-4 mt-2 rounded-xl bg-gold text-white text-[11px] font-sans uppercase tracking-[0.2em] hover:bg-ink hover:text-white transition-colors duration-500 shadow-md cursor-pointer disabled:opacity-50"
                     >
-                      Submit Booking Inquiry
+                      {isSubmitting ? "Processing..." : "Submit Booking Inquiry"}
                     </button>
                   </motion.form>
                 ) : (

@@ -39,6 +39,12 @@ body {
   line-height: 1.6;
 }
 
+@media (pointer: fine) {
+  html, body, * {
+    cursor: none !important;
+  }
+}
+
 /* Typography Helpers */
 .font-sans {
   font-family: var(--font-sans);

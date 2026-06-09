@@ -20,11 +20,6 @@ export default function CustomCursor() {
     // Disable on touch screens (coarse pointers)
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
-    // Force hide default cursor completely across the entire app
-    const style = document.createElement("style");
-    style.innerHTML = `* { cursor: none !important; }`;
-    document.head.appendChild(style);
-
     const cursor = cursorRef.current;
     const dot = dotRef.current;
     if (!cursor || !dot) return;
@@ -84,9 +79,6 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       cancelAnimationFrame(rafRef.current);
-      if (document.head.contains(style)) {
-        document.head.removeChild(style);
-      }
     };
   }, []);
 
@@ -98,11 +90,11 @@ export default function CustomCursor() {
     <>
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-8 h-8 border border-champagne/80 rounded-full pointer-events-none z-[99999] mix-blend-difference will-change-transform transition-colors duration-300"
+        className="fixed top-0 left-0 w-8 h-8 border border-champagne/80 rounded-full pointer-events-none z-[99999] will-change-transform transition-colors duration-300"
       />
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-champagne rounded-full pointer-events-none z-[100000] mix-blend-difference will-change-transform"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-champagne rounded-full pointer-events-none z-[100000] will-change-transform"
       />
     </>
   );

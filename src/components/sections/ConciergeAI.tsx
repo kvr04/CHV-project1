@@ -9,16 +9,8 @@ interface Message {
   text: string;
 }
 
-const PREDEFINED_RESPONSES: Record<string, string> = {
-  availability: "We currently have limited availability in our Presidential Suite and Sky Palace Villa for the upcoming season. Would you like me to reserve a tentative hold for your dates?",
-  dining: "Our fine dining options include: Michelin-star rooftop candlelight dinners, custom wine tasting in our private cave vaults, and personalized tableside cooking curated by our resident Chef. Bookings are recommended at least 24 hours in advance.",
-  spa: "Luxoria Palace spa features private thermal baths carved in travertine columns, botanical aromatherapy sessions, and an infinity lagoon. Treatments are available daily from 08:00 to 22:00.",
-  wellness: "Wellness options include sunlit yoga sessions, biomechanically optimized personal trainers, and private meditation gardens surrounded by soothing spring waters.",
-  booking: "Reservations can be locked directly using our final reservation form at the bottom of the page, or I can manually prepare a custom itinerary for you. Please let me know your preferred dates.",
-  amenities: "Our key amenities include 24/7 private butler services, airport pickup via premium zero-emission limousines, an art vault repository, private beach channels, and automated smart-room panel controls."
-};
-
-const BOT_FALLBACK = "I am only authorized to assist with room availability, services, bookings, dining arrangements, spa, and general wellness amenities inside Luxoria Palace. Please let me know how I can guide your stay.";
+// Predefined fallback text if API fails
+const BOT_FALLBACK = "I am experiencing a temporary connection issue to the main Palace network. Please try again in a moment.";
 
 export default function ConciergeAI() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +25,7 @@ export default function ConciergeAI() {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
     const userText = inputValue;
@@ -41,27 +33,20 @@ export default function ConciergeAI() {
     setMessages(updatedMessages);
     setInputValue("");
 
-    // Simulate AI thinking and reply
-    setTimeout(() => {
-      let botResponse = BOT_FALLBACK;
-      const lowerText = userText.toLowerCase();
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userText }),
+      });
 
-      if (lowerText.includes("room") || lowerText.includes("suite") || lowerText.includes("villa") || lowerText.includes("availability") || lowerText.includes("stay")) {
-        botResponse = PREDEFINED_RESPONSES.availability;
-      } else if (lowerText.includes("dining") || lowerText.includes("food") || lowerText.includes("restaurant") || lowerText.includes("wine") || lowerText.includes("chef") || lowerText.includes("eat")) {
-        botResponse = PREDEFINED_RESPONSES.dining;
-      } else if (lowerText.includes("spa") || lowerText.includes("massage") || lowerText.includes("thermal") || lowerText.includes("pool")) {
-        botResponse = PREDEFINED_RESPONSES.spa;
-      } else if (lowerText.includes("yoga") || lowerText.includes("wellness") || lowerText.includes("gym") || lowerText.includes("fitness")) {
-        botResponse = PREDEFINED_RESPONSES.wellness;
-      } else if (lowerText.includes("book") || lowerText.includes("reserve") || lowerText.includes("hold") || lowerText.includes("reservation")) {
-        botResponse = PREDEFINED_RESPONSES.booking;
-      } else if (lowerText.includes("amenity") || lowerText.includes("service") || lowerText.includes("butler") || lowerText.includes("beach")) {
-        botResponse = PREDEFINED_RESPONSES.amenities;
-      }
+      if (!response.ok) throw new Error("API response error");
 
-      setMessages((prev) => [...prev, { sender: "bot" as const, text: botResponse }]);
-    }, 800);
+      const data = await response.json();
+      setMessages((prev) => [...prev, { sender: "bot" as const, text: data.reply || BOT_FALLBACK }]);
+    } catch {
+      setMessages((prev) => [...prev, { sender: "bot" as const, text: BOT_FALLBACK }]);
+    }
   };
 
   const handleQuickAction = (text: string) => {
