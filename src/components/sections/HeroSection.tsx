@@ -25,7 +25,7 @@ export default function HeroSection() {
 
   const textRef = useRef<HTMLDivElement>(null);
 
-  const [imagesLoaded, setImagesLoaded] =
+  const [, setImagesLoaded] =
     useState(false);
 
   // DRAW FRAME
@@ -157,6 +157,7 @@ export default function HeroSection() {
   useEffect(() => {
     const container = containerRef.current;
     const canvas = canvasRef.current;
+    const textNode = textRef.current;
 
     if (!container || !canvas) return;
 
@@ -193,7 +194,7 @@ export default function HeroSection() {
     // HERO TEXT ANIMATION
 
     gsap.fromTo(
-      textRef.current,
+      textNode,
       {
         opacity: 1,
         y: 0,
@@ -220,7 +221,7 @@ export default function HeroSection() {
         trigger.kill();
       });
 
-      gsap.killTweensOf(textRef.current);
+      gsap.killTweensOf(textNode);
     };
   }, [drawFrame]);
 
