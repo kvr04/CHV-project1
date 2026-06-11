@@ -77,10 +77,10 @@ export default function Preloader() {
       className="fixed inset-0 z-[999999] bg-[#181512] flex flex-col items-center justify-center pointer-events-none"
     >
       <div ref={textRef} className="flex flex-col items-center gap-6">
-        <h1 className="text-white font-editorial text-4xl tracking-[0.25em] font-light">
+        <h1 className="text-white font-editorial text-4xl tracking-[0.25em] font-light text-center pl-[0.25em] px-4">
           LUXORIA PALACE
         </h1>
-        <p className="text-stone font-sans text-xs tracking-[0.3em] uppercase opacity-70">
+        <p className="text-stone font-sans text-xs tracking-[0.3em] uppercase opacity-70 text-center pl-[0.3em] px-4">
           Entering Timeless Luxury
         </p>
         <div className="w-64 h-[1px] bg-white/10 mt-6 relative">
