@@ -139,6 +139,9 @@ export default function HeroSection() {
       
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
+      
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
 
       drawFrame(currentFrame.current);
     };
@@ -251,7 +254,7 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative h-[400vh] w-screen bg-[#181512]"
+      className="relative h-[400vh] w-full bg-[#181512]"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
 
@@ -407,7 +410,7 @@ export default function HeroSection() {
                   text-[11px]
                   shadow-xl
                   hover:bg-[#C6A97A]
-                  hover:text-[#181512]
+                  hover:text-[#FFFDF9]
                   hover:scale-[1.03]
                   transition-all
                   duration-700

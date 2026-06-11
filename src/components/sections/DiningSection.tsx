@@ -97,7 +97,7 @@ export default function DiningSection() {
               }}
               className={`group relative h-[580px] overflow-hidden rounded-[32px] border border-[#ddd2c6] bg-white/50 backdrop-blur-xl shadow-[0_25px_70px_rgba(0,0,0,0.06)] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
                 hoveredIndex !== null && hoveredIndex !== idx
-                  ? "opacity-40 scale-[0.98] blur-[4px]"
+                  ? "opacity-60 scale-[0.98]"
                   : "opacity-100"
               }`}
             >
@@ -156,7 +156,7 @@ export default function DiningSection() {
                   whileHover={{ opacity: 1, y: 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="text-white/75 font-sans text-[13px] leading-relaxed tracking-wide mt-5 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                  <p className="text-beige font-sans text-[13px] leading-relaxed tracking-wide mt-5 opacity-0 group-hover:opacity-100 transition-all duration-700">
                     {item.description}
                   </p>
                 </motion.div>

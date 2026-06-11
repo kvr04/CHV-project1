@@ -401,7 +401,9 @@ export default function SuitesSection() {
         </div>
 
         {/* FULL-WIDTH GALLERY (Moved from right column) */}
-        <div className="overflow-hidden py-16 mt-20 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+      </div>
+
+      <div className="relative z-10 overflow-hidden py-16 mt-20 -mx-6 sm:-mx-12 lg:-mx-24">
           <motion.div
             animate={
               hoveredIndex === null
@@ -452,7 +454,7 @@ export default function SuitesSection() {
                   ${
                     hoveredIndex !== null &&
                     hoveredIndex !== i
-                      ? "opacity-40 scale-95 blur-[4px]"
+                      ? "opacity-60 scale-95"
                       : "opacity-100"
                   }
                 `}
@@ -549,7 +551,7 @@ export default function SuitesSection() {
                     <p
                       className="
                         mt-3
-                        text-white/70
+                        text-beige
                         text-[14px]
                         leading-relaxed
                       "
@@ -563,7 +565,6 @@ export default function SuitesSection() {
             ))}
           </motion.div>
         </div>
-      </div>
     </section>
   );
 }

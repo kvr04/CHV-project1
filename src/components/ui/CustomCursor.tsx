@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -16,9 +16,12 @@ export default function CustomCursor() {
   const ringScaleRef = useRef(1);
   const dotScaleRef = useRef(1);
 
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     // Disable on touch screens (coarse pointers)
     if (window.matchMedia("(pointer: coarse)").matches) return;
+    setIsVisible(true);
 
     const cursor = cursorRef.current;
     const dot = dotRef.current;
@@ -82,7 +85,7 @@ export default function CustomCursor() {
     };
   }, []);
 
-  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
+  if (!isVisible) {
     return null;
   }
 

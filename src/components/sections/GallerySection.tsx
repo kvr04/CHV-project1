@@ -49,7 +49,7 @@ export default function GallerySection() {
                 onClick={() => setActiveImage(src)}
                 className={`relative group rounded-[20px] overflow-hidden cursor-pointer shadow-[0_10px_40px_rgba(0,0,0,0.08)] bg-stone/5 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${gridClasses} ${
                   hoveredIndex !== null && hoveredIndex !== idx
-                    ? "opacity-30 blur-[4px] scale-[0.98]"
+                    ? "opacity-60 scale-[0.98]"
                     : "opacity-100"
                 }`}
               >
