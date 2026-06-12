@@ -21,13 +21,15 @@ export default function CustomCursor() {
   useEffect(() => {
     // Disable on touch screens (coarse pointers)
     if (window.matchMedia("(pointer: coarse)").matches) return;
-    setIsVisible(true);
-
+    
     const cursor = cursorRef.current;
     const dot = dotRef.current;
     if (!cursor || !dot) return;
 
     const onMouseMove = (e: MouseEvent) => {
+      if (!isVisible) {
+        setIsVisible(true);
+      }
       mouseRef.current.x = e.clientX;
       mouseRef.current.y = e.clientY;
 
@@ -83,21 +85,17 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", onMouseMove);
       cancelAnimationFrame(rafRef.current);
     };
-  }, []);
-
-  if (!isVisible) {
-    return null;
-  }
+  }, [isVisible]);
 
   return (
     <>
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-8 h-8 border border-champagne/80 rounded-full pointer-events-none z-[99999] will-change-transform transition-colors duration-300"
+        className={`fixed top-0 left-0 w-8 h-8 border border-champagne/80 rounded-full pointer-events-none z-[99999] will-change-transform transition-colors duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       />
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-champagne rounded-full pointer-events-none z-[100000] will-change-transform"
+        className={`fixed top-0 left-0 w-1.5 h-1.5 bg-champagne rounded-full pointer-events-none z-[100000] will-change-transform transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       />
     </>
   );
